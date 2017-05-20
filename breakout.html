@@ -57,28 +57,30 @@
         <script src="breakout.js"></script>
 
         <script>
-            var game = breakout({
-                selector: '#myCanvas',
-                rows: $("#row-count").val(),
-                columns: $("#column-count").val()
-            });
+            $(document).ready(function() {
+                var game = breakout({
+                    selector: '#myCanvas',
+                    rows: $("#row-count").val(),
+                    columns: $("#column-count").val()
+                });
 
-            // koppel de knop in de footer met een functie die de grootte van
-            // het spelbord opnieuw instelt, en een nieuw spel start
-            $("#restart-button").click(function () {
-                game.layout(
-                    $("#row-count").val(),
-                    $("#column-count").val()
-                );
-            });
+                // koppel de knop in de footer met een functie die de grootte van
+                // het spelbord opnieuw instelt, en een nieuw spel start
+                $("#restart-button").click(function () {
+                    game.layout(
+                        $("#row-count").val(),
+                        $("#column-count").val()
+                    );
+                });
 
-            // zorg ervoor dat op enter drukken in de invulvelden voor het
-            // aantal rijen of kolommen, hetzelfde effect heeft als het
-            // aanklikken van de knop om een nieuw spel te starten
-            $("#row-count, #column-count").keyup(function(event) {
-                if (event.keyCode === 13) {
-                    $("#restart-button").click();
-                }
+                // zorg ervoor dat op enter drukken in de invulvelden voor het
+                // aantal rijen of kolommen, hetzelfde effect heeft als het
+                // aanklikken van de knop om een nieuw spel te starten
+                $("#row-count, #column-count").keyup(function (event) {
+                    if (event.keyCode === 13) {
+                        $("#restart-button").click();
+                    }
+                });
             });
         </script>
 
