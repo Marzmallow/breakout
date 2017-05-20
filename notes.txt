@@ -1,0 +1,8 @@
+add music on first brick hit
+pauze knop
+press enter to start
+catchshit
+allbricks als superklasse, brick erft alles behalve pos
+
+
+bal juist laten botsen --> debug en check eerste weerkaatsing op brick
