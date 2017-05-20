@@ -136,11 +136,13 @@ function breakout(args) {
 
     function drawBricks() {
         for (let brick of allBricks.bricks) {
-            ctx.beginPath();
-            ctx.rect(brick.x, brick.y, allBricks.width, allBricks.height);
-            ctx.fillStyle = allBricks.color;
-            ctx.fill();
-            ctx.closePath();
+            if (brick instanceof Brick) {
+                ctx.beginPath();
+                ctx.rect(brick.x, brick.y, allBricks.width, allBricks.height);
+                ctx.fillStyle = allBricks.color;
+                ctx.fill();
+                ctx.closePath();
+            }
         }
     }
 
