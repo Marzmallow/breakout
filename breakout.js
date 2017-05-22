@@ -69,6 +69,8 @@ function breakout(args) {
     // Function that initializes the objects and starts the game
     // Params: number of rows and columns
     function start(rows, cols) {
+        // Start song
+        playSong();
         // If there is a (previous) game running, stop it
         if (requestId) {
             cancelAnimationFrame(requestId);
@@ -112,7 +114,6 @@ function breakout(args) {
             }
             return allBricks;
         }
-
         draw();
     }
 
@@ -234,14 +235,20 @@ function breakout(args) {
             if (brick.status < 1) {
                 allBricks['bricks'].delete(brick);
             }
-        } else // Changes the ball's direction and speed when it hits a moving paddle
+        } else // Changes the ball's direction (and speed when it hits a moving paddle)
             {
-            ball['speed'] += 0.5;
-            if (paddle.x > prevPaddleX) {
+            if(ball.speed < 6) {
+                ball['speed'] += 0.5;
+
+            }
+
+            if (paddle.x > prevPaddleX) // paddle moving to the right
+            {
                 if (ball.direction <= 3 * Math.PI / 2) {
                     ball['direction'] = ball.direction + Math.PI / 2;
                 }
-            } else if (paddle.x < prevPaddleX) {
+            } else if (paddle.x < prevPaddleX) // paddle moving to the left
+            {
                 if (ball.direction > 3 * Math.PI / 2) {
                     ball['direction'] = ball.direction - Math.PI / 2;
                 }
@@ -424,5 +431,10 @@ function breakout(args) {
             };
         }
 
+    }
+
+    // Starts the backgroundsong
+    function playSong() {
+        document.getElementById('audiotag1').play();
     }
 }
